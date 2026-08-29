@@ -171,7 +171,8 @@ test('ja localizes renderer-owned output across all five modes without translati
     assert.ok(result.html.includes(`<h1>${authoredTitle}</h1>`), `${type}: authored heading changed`);
     assert.match(result.html, /<text\b[^>]*>凡例<\/text>/);
     assert.match(result.html, /aria-label="[^"]*にフォーカス/);
-    assert.match(result.html, /<desc id="archify-diagram-description">Archify が生成した/);
+    assert.match(result.html, /<desc id="archify-diagram-description">[^<]*図。<\/desc>/);
+    assert.doesNotMatch(result.html, /ARCHIFY/);
     assert.match(result.html, /"locale":"ja"/);
     assert.match(result.html, />図を書き出し</);
     assert.doesNotMatch(result.html, /\{\{i18n:/);
